@@ -3,32 +3,31 @@ const chalk = require("chalk");
 const figlet = require("figlet");
 const inquirer = require("inquirer");
 
+const joke = require("./src/api.js");
+
 const argv = yargs.argv;
 const command = process.argv[2];
 
-console.log(
-    chalk.green(figlet.textSync("chuck jokes", { horizontalLayout: "full" }))
-);
+module.exports = () => {
+    console.log(
+        chalk.green(
+            figlet.textSync("chuck jokes", { horizontalLayout: "full" })
+        )
+    );
 
-console.log(
-    chalk.white.bgGreen.bold("\nDo you wanna hear some Chuck Norris jokes?\n")
-);
+    console.log(
+        chalk.white.bgGreen.bold(
+            "\nDo you wanna hear some Chuck Norris jokes?\n"
+        )
+    );
 
-console.log(chalk.white.bgGreen.bold("\nType ENTER to hear one...\n"));
+    console.log(chalk.white.bgGreen.bold("\nType ENTER to hear one...\n"));
 
-switch (command) {
-    case "add":
-        console.log("look alive");
-        break;
-    case "list":
-        notes.getAll();
-        break;
-    case "read":
-        notes.getNote(argv.title);
-        break;
-    case "remove":
-        notes.removeNote(argv.title);
-        break;
-    default:
-        console.log("Command not recognized.");
-}
+    switch (command) {
+        case "joke":
+            joke.requestJoke();
+            break;
+        default:
+            console.log("Command not found.");
+    }
+};

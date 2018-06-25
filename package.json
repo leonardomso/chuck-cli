@@ -9,11 +9,14 @@
         "lint": "eslint src/**",
         "lint:staged": "lint-staged"
     },
+    "keywords": [],
+    "bin": {
+        "chuck": "bin/chuck"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/leonardomso/chuck-cli.git"
     },
-    "keywords": [],
     "author": "",
     "license": "ISC",
     "lint-staged": {
