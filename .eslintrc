@@ -1,7 +1,13 @@
 {
+    "extends": [
+        "prettier"
+    ],
     "parser": "babel-eslint",
     "rules": {
         "strict": 0,
         "no-unused-vars": [2, {"vars": "all", "args": "after-used"}]
-    }
+    },
+    "plugins": [
+        "prettier",
+    ]
 }

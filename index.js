@@ -2,8 +2,9 @@ const yargs = require("yargs");
 const chalk = require("chalk");
 const figlet = require("figlet");
 const inquirer = require("inquirer");
-const joke = require("./cmds/joke.js");
 const fetch = require("node-fetch");
+
+const req = require("./src/requests.js");
 
 const argv = yargs.argv;
 const command = process.argv[2];
@@ -15,21 +16,37 @@ module.exports = () => {
         )
     );
 
-    const requestJoke = async () => {
-        const url = "https://api.chucknorris.io/jokes/random";
-        let response = await fetch(url);
-        let data = await response.json();
-        return console.log(chalk.white.bgGreen.bold(data.value));
-    };
+    const categories = [
+        "explicit",
+        "dev",
+        "movie",
+        "food",
+        "celebrity",
+        "science",
+        "sport",
+        "political",
+        "religion",
+        "animal",
+        "history",
+        "music",
+        "travel",
+        "career",
+        "money",
+        "fashion"
+    ];
 
     switch (command) {
         case "joke":
-            requestJoke();
+            req.requestJoke();
             break;
-        case "test":
-            console.log("test working fine");
+        case "categories":
+            req.requestCategories();
             break;
         default:
-            console.log("Command not found.");
+            const pickedCategorie = categories.map(categorie => {
+                if (categorie === command) {
+                    req.requestSpecificCategorie(categorie);
+                }
+            });
     }
 };
