@@ -2,8 +2,8 @@ const yargs = require("yargs");
 const chalk = require("chalk");
 const figlet = require("figlet");
 const inquirer = require("inquirer");
-
-const joke = require("./src/api.js");
+const joke = require("./cmds/joke.js");
+const fetch = require("node-fetch");
 
 const argv = yargs.argv;
 const command = process.argv[2];
@@ -11,21 +11,23 @@ const command = process.argv[2];
 module.exports = () => {
     console.log(
         chalk.green(
-            figlet.textSync("chuck jokes", { horizontalLayout: "full" })
+            figlet.textSync("chuck jokes\n", { horizontalLayout: "full" })
         )
     );
 
-    console.log(
-        chalk.white.bgGreen.bold(
-            "\nDo you wanna hear some Chuck Norris jokes?\n"
-        )
-    );
-
-    console.log(chalk.white.bgGreen.bold("\nType ENTER to hear one...\n"));
+    const requestJoke = async () => {
+        const url = "https://api.chucknorris.io/jokes/random";
+        let response = await fetch(url);
+        let data = await response.json();
+        return console.log(chalk.white.bgGreen.bold(data.value));
+    };
 
     switch (command) {
         case "joke":
-            joke.requestJoke();
+            requestJoke();
+            break;
+        case "test":
+            console.log("test working fine");
             break;
         default:
             console.log("Command not found.");
