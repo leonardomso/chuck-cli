@@ -1,13 +1,15 @@
 {
+    "parser": "babel-eslint",
     "extends": [
         "prettier"
     ],
-    "parser": "babel-eslint",
+    "env": {
+        "es6": true
+    },
     "rules": {
-        "strict": 0,
-        "no-unused-vars": [2, {"vars": "all", "args": "after-used"}]
+        "comma-dangle": ["error", "only-multiline"]
     },
     "plugins": [
-        "prettier",
-    ]
+        "prettier"
+    ],
 }
