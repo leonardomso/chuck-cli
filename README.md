@@ -7,10 +7,18 @@ Chuck Norris CLI is a simple cli made to hear some jokes.
 ## Usage
 
 ```sh
-$ git clone https://github.com/leonardomso/starboy-boilerplate
-$ cd starboy-boilerplate
-$ npm install
-$ npm start
+$ git clone https://github.com/leonardomso/chuck-cli.git
+$ cd chuck-cli
+$ npm install -g
+$ chuck joke
+```
+
+## Commands
+
+```sh
+$ chuck joke - tell you a random joke
+$ chuck categories - show you all the categories
+$ chuck <categorie> - tell you a joke based in a categorie
 ```
 
 License
