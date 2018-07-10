@@ -12,7 +12,11 @@
         "test": "jest",
         "test:watch": "jest --watch --coverage"
     },
-    "keywords": ["chuck", "norris", "cli"],
+    "keywords": [
+        "chuck",
+        "norris",
+        "cli"
+    ],
     "bin": {
         "chuck": "bin/chuck"
     },
